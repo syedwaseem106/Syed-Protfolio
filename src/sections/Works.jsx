@@ -133,14 +133,7 @@ const Works = () => {
               </div>
             </div>
 
-            {/* mobile image */}
-            <div className="relative mt-10 px-10 md:hidden h-[300px]">
-              <img
-                src={project.image}
-                alt={project.name}
-                className="w-full h-full object-cover rounded-2xl"
-              />
-            </div>
+
             
             {/* divider */}
             <div className="w-full h-px mt-10 bg-black/10 transition-colors duration-500 group-hover:bg-white/10" />
