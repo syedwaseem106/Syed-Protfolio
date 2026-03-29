@@ -6,36 +6,15 @@ I build scalable, high-performance full-stack and AI-powered applications that d
 > 💰 **Achievement**: Delivered production-grade solutions that have generated **over ₹1Cr in revenue** for my clients.
 
 ---
+A personal portfolio website built to showcase my work as a Full-Stack Developer.
 
-## 🛠️ Tech Stack
+Developed using modern web technologies, this portfolio focuses on clean design, performance, and real-world impact. I customized and structured it to highlight my backend systems, AI projects, and production experience.
 
-- **Languages**: JavaScript, Python, Java
-- **Frontend**: React, TailwindCSS, HTML, CSS, Vite
-- **Backend**: Node.js, FastAPI, Spring Boot, REST APIs
-- **Databases**: PostgreSQL, MongoDB, SQL, Redis
-- **DevOps & Cloud**: AWS (EC2, S3, RDS, Lambda), Docker, CI/CD, Git
-- **Core CS**: Data Structures & Algorithms, System Design, DBMS, Operating Systems
+I’m always open to building, collaborating, and contributing to projects that solve real-world problems and create meaningful impact.
 
 ---
 
-## 📂 Featured Projects
-
-### 📈 Stock Pattern Analyser
-Built a production-grade AI-driven data processing system from scratch.
-- **Impact**: Generated **over ₹1Cr in revenue** for the client.
-- **Results**: Improved pattern recognition accuracy by 28% and reduced manual effort by 80%.
-- **Tech**: Python, SQL
-
-### 🤖 AI-Powered Interview Platform
-Scalable AI platform for automated interview question generation and evaluation.
-- **Impact**: Supported 300+ users, improved session completion by 45%.
-- **Tech**: React, Node.js, MongoDB, Python
-
-### 🔗 Scalable URL Shortening Service
-High-performance system with caching and optimized database queries.
-- **Impact**: Improved response time by 40% and increased query performance by 35%.
-- **Tech**: React, Node.js, Redis, PostgreSQL
-
+> Feel free to connect — let’s build something scalable, impactful, and real.
 ---
 
 ## 👨‍💻 About Me
