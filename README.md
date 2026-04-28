@@ -16,6 +16,37 @@ I’m always open to building, collaborating, and contributing to projects that 
 
 > Feel free to connect — let’s build something scalable, impactful, and real.
 ---
+Features Implemented
+🌐 Public Portfolio
+Home page with professional introduction and hero section
+Skills and technical expertise showcase
+Projects portfolio section
+Responsive modern UI/UX
+Interactive animations and immersive visual effects
+Optimized performance and smooth scrolling experience
+🛠 Tech Stack
+React.js
+Vite
+Tailwind CSS
+Three.js
+React Three Fiber
+Drei
+GSAP
+Lenis
+React Scroll
+React Responsive
+Iconify
+ESLint
+🤖 AI Tools Used
+ChatGPT – Assisted in UI generation, structuring components, and development support
+GitHub Copilot – Accelerated repetitive coding tasks and implementation
+📖 AI Contribution
+Approximately 35–45% AI-assisted
+Remaining implementation manually customized and developed
+All AI-generated code was reviewed, understood, and integrated manually
+▶ Run Locally
+npm install
+npm run dev
 
 ## 👨‍💻 About Me
 I specialize in building backend-heavy systems and full-stack applications that scale. From designing APIs to deploying AI-powered platforms, I focus on performance, reliability, and clean system design. 
