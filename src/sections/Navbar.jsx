@@ -1,11 +1,13 @@
 import { Icon } from "@iconify/react";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import { contactData, socials } from "../constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Link } from "react-scroll";
+import { PathContext } from "../App";
 
 const Navbar = () => {
+  const { activePathway, setActivePathway } = useContext(PathContext);
   const navRef = useRef(null);
   const linksRef = useRef([]);
   const contactRef = useRef(null);
@@ -155,6 +157,40 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+
+       {/* Path Toggle - center right, visible on dark and light backgrounds */}
+       <div className="fixed top-1/2 right-6 z-60 flex gap-2 font-light tracking-wider text-sm rounded-full px-2 py-1 transform -translate-y-1/2 backdrop-blur-sm shadow-lg"
+         style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(0,0,0,0.06)' }}>
+        <button
+          onClick={() => {
+            setActivePathway("sde");
+            const el = document.getElementById("home");
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+          }}
+          className={`px-3 py-1.5 rounded-full transition-all duration-300 shadow-sm ${
+            activePathway === "sde"
+              ? "text-black bg-white/90 border border-black/10"
+              : "text-black/60 bg-white/30 border border-black/10 hover:text-black"
+          }`}
+        >
+          SDE
+        </button>
+        <button
+          onClick={() => {
+            setActivePathway("de");
+            const el = document.getElementById("home");
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+          }}
+          className={`px-3 py-1.5 rounded-full transition-all duration-300 shadow-sm ${
+            activePathway === "de"
+              ? "text-black bg-white/90 border border-black/10"
+              : "text-black/60 bg-white/30 border border-black/10 hover:text-black"
+          }`}
+        >
+          DE
+        </button>
+      </div>
+
       <div
         className="fixed z-50 flex flex-col items-center justify-center gap-1 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20 top-4 right-10"
         onClick={toggleMenu}

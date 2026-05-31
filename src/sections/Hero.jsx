@@ -3,18 +3,27 @@ import { Planet } from "../components/Planet";
 import { Environment, Float, Lightformer } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
-import { heroData } from "../constants";
+import { heroData, heroDataDE } from "../constants";
+import { useContext } from "react";
+import { PathContext } from "../App";
 
 const Hero = () => {
+  const { activePathway } = useContext(PathContext);
   const isMobile = useMediaQuery({ maxWidth: 853 });
-  const text = heroData.tagline;
+  const currentHeroData = activePathway === "de" ? heroDataDE : heroData;
+  const text = currentHeroData.tagline;
   return (
     <section id="home" className="flex flex-col justify-end min-h-screen">
       <AnimatedHeaderSection
-        subTitle={heroData.quote}
-        title={heroData.name}
+        subTitle={currentHeroData.quote}
+        title={currentHeroData.name}
         text={text}
         textColor={"text-black"}
+        valueClassName={
+          activePathway === "de"
+            ? "font-light uppercase text-black text-xl md:text-2xl lg:text-3xl"
+            : undefined
+        }
       />
       <figure
         className="absolute inset-0 -z-50"

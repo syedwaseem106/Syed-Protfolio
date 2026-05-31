@@ -1,11 +1,16 @@
-import { useRef } from "react";
+import { useRef, useContext } from "react";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
-import { servicesData, servicesSection } from "../constants";
+import { servicesData, servicesSection, servicesDataDE, servicesSectionDE } from "../constants";
 import { useMediaQuery } from "react-responsive";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { PathContext } from "../App";
+
 const Services = () => {
-  const text = servicesSection.title;
+  const { activePathway } = useContext(PathContext);
+  const currentServicesData = activePathway === "de" ? servicesDataDE : servicesData;
+  const currentServicesSection = activePathway === "de" ? servicesSectionDE : servicesSection;
+  const text = currentServicesSection.title;
   const serviceRefs = useRef([]);
   const isDesktop = useMediaQuery({ minWidth: "48rem" }); //768px
   useGSAP(() => {
@@ -32,7 +37,7 @@ const Services = () => {
         textColor={"text-white"}
         withScrollTrigger={true}
       />
-      {servicesData.map((service, index) => (
+      {currentServicesData.map((service, index) => (
         <div
           ref={(el) => (serviceRefs.current[index] = el)}
           key={index}
@@ -41,7 +46,7 @@ const Services = () => {
             isDesktop
               ? {
                   top: `calc(10vh + ${index * 5}em)`,
-                  marginBottom: `${(servicesData.length - index - 1) * 5}rem`,
+                  marginBottom: `${(currentServicesData.length - index - 1) * 5}rem`,
                 }
               : { top: 0 }
           }

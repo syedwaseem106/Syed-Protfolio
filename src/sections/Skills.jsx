@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
-import { skillsData } from "../constants";
+import { skillsData, skillsDataDE } from "../constants";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { PathContext } from "../App";
 
 const SkillCategory = ({ title, skills, index }) => {
   return (
@@ -25,6 +26,9 @@ const SkillCategory = ({ title, skills, index }) => {
 };
 
 const Skills = () => {
+  const { activePathway } = useContext(PathContext);
+  const currentSkillsData = activePathway === "de" ? skillsDataDE : skillsData;
+  
   useGSAP(() => {
     gsap.from(".skill-category", {
       y: 50,
@@ -39,23 +43,53 @@ const Skills = () => {
     });
   }, []);
 
+  const getSkillsForCurrentPath = () => {
+    if (activePathway === "de") {
+      return [
+        { title: "Core Programming", skills: currentSkillsData.coreProgamming },
+        { title: "Data Engineering & Pipelines", skills: currentSkillsData.dataEngineering },
+        { title: "Big Data & Streaming", skills: currentSkillsData.bigDataStreaming },
+        { title: "Databases & Storage", skills: currentSkillsData.databasesStorage },
+        { title: "Cloud Platforms", skills: currentSkillsData.cloudPlatforms },
+        { title: "DevOps & Tools", skills: currentSkillsData.devOpsTools },
+        { title: "Analytics & Concepts", skills: currentSkillsData.analyticsConepts },
+        { title: "Certifications", skills: currentSkillsData.certifications },
+      ];
+    } else {
+      return [
+        { title: "Languages", skills: currentSkillsData.languages },
+        { title: "Backend", skills: currentSkillsData.backend },
+        { title: "Frontend", skills: currentSkillsData.frontend },
+        { title: "Databases", skills: currentSkillsData.databases },
+        { title: "Cloud & Tools", skills: currentSkillsData.cloudTools },
+        { title: "Core Fundamentals", skills: currentSkillsData.core },
+      ];
+    }
+  };
+
+  const skillsList = getSkillsForCurrentPath();
+
   return (
     <section id="skills" className="min-h-screen bg-[#e5e5e0] pt-20">
       <AnimatedHeaderSection
         subTitle={"The Stack that powers the systems"}
         title={"Skills"}
-        text={"A curated list of technologies and tools I use to build scalable, high-performance applications."}
+        text={activePathway === "de" 
+          ? "A comprehensive toolkit of data engineering technologies, tools, and concepts used to build scalable data pipelines and infrastructure."
+          : "A curated list of technologies and tools I use to build scalable, high-performance applications."}
         textColor={"text-black"}
         withScrollTrigger={true}
       />
       
       <div className="px-10 pb-28">
-        <SkillCategory title="Languages" skills={skillsData.languages} index={0} />
-        <SkillCategory title="Backend" skills={skillsData.backend} index={1} />
-        <SkillCategory title="Frontend" skills={skillsData.frontend} index={2} />
-        <SkillCategory title="Databases" skills={skillsData.databases} index={3} />
-        <SkillCategory title="Cloud & Tools" skills={skillsData.cloudTools} index={4} />
-        <SkillCategory title="Core Fundamentals" skills={skillsData.core} index={5} />
+        {skillsList.map((item, index) => (
+          <SkillCategory 
+            key={index}
+            title={item.title} 
+            skills={item.skills} 
+            index={index} 
+          />
+        ))}
       </div>
     </section>
   );

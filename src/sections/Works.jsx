@@ -1,11 +1,14 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { projects, projectsDE } from "../constants";
+import { useRef, useContext } from "react";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
-import { projects } from "../constants";
-import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { PathContext } from "../App";
 
 const Works = () => {
+  const { activePathway } = useContext(PathContext);
+  const currentProjects = activePathway === "de" ? projectsDE : projects;
   const overlayRefs = useRef([]);
   const text = `Featured projects that have been meticulously
     crafted with passion to drive
@@ -38,7 +41,7 @@ const Works = () => {
       },
       {
         clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
-        duration: 0.2, // Slightly slower for smoothness
+        duration: 0.2,
         ease: "power2.out",
       }
     );
@@ -60,14 +63,13 @@ const Works = () => {
   return (
     <section id="work" className="flex flex-col min-h-screen">
       <AnimatedHeaderSection
-        subTitle={"Logic meets Aesthetics, Seamlessly"}
+        subTitle={"Featured Work"}
         title={"Works"}
         text={text}
         textColor={"text-black"}
-        withScrollTrigger={true}
       />
       <div className="relative flex flex-col font-light mt-10">
-        {projects.map((project, index) => (
+        {currentProjects.map((project, index) => (
           <div
             key={project.id}
             id="project"
@@ -133,8 +135,6 @@ const Works = () => {
               </div>
             </div>
 
-
-            
             {/* divider */}
             <div className="w-full h-px mt-10 bg-black/10 transition-colors duration-500 group-hover:bg-white/10" />
           </div>

@@ -1,13 +1,17 @@
-import { useRef } from "react";
+import { useRef, useContext } from "react";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
 import { AnimatedTextLines } from "../components/AnimatedTextLines";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { aboutData, heroData } from "../constants";
+import { aboutData, heroData, aboutDataDE, heroDataDE } from "../constants";
+import { PathContext } from "../App";
 
 const About = () => {
-  const text = aboutData.title;
-  const aboutText = `${aboutData.content}\n\nWhen I’m not building:\n${aboutData.notBuilding.map(item => `• ${item}`).join('\n')}`;
+  const { activePathway } = useContext(PathContext);
+  const currentAboutData = activePathway === "de" ? aboutDataDE : aboutData;
+  const currentHeroData = activePathway === "de" ? heroDataDE : heroData;
+  const text = currentAboutData.title;
+  const aboutText = `${currentAboutData.content}\n\nWhen I'm not building:\n${currentAboutData.notBuilding.map(item => `• ${item}`).join('\n')}`;
   const imgRef = useRef(null);
   useGSAP(() => {
     gsap.to("#about", {
@@ -46,7 +50,7 @@ const About = () => {
            <img
             ref={imgRef}
             src="images/portrait.jpg"
-            alt={heroData.name}
+            alt={currentHeroData.name}
             className="w-full rounded-3xl grayscale hover:grayscale-0 transition-all duration-700"
           />
         </div>

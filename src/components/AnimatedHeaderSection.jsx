@@ -9,6 +9,7 @@ const AnimatedHeaderSection = ({
   text,
   textColor,
   withScrollTrigger = false,
+  valueClassName,
 }) => {
   const contextRef = useRef(null);
   const headerRef = useRef(null);
@@ -66,7 +67,11 @@ const AnimatedHeaderSection = ({
         <div className="py-12 sm:py-16 text-end">
           <AnimatedTextLines
             text={text}
-            className={`font-light uppercase value-text-responsive ${textColor}`}
+            className={
+              valueClassName
+                ? `${valueClassName} ${textColor}`
+                : `font-light uppercase value-text-responsive ${textColor}`
+            }
           />
         </div>
       </div>
